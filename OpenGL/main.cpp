@@ -37,19 +37,10 @@ mat4 view;
 GLuint view_loc;
 mat4 instance;
 /* Khởi tạo các tham số chiếu sáng - tô bóng*/
-point4 light_position(1.0, 0.0, 2.0, 0.0);
-color4 light_ambient(0.2, 0.2, 0.2, 1.0);
 color4 light_diffuse(1.0, 1.0, 1.0, 1.0);
-color4 light_specular(1.0, 1.0, 1.0, 1.0);
-
-color4 material_ambient(1.0, 0.0, 1.0, 1.0);
 color4 material_diffuse(1.0, 0.8, 0.0, 1.0);
-color4 material_specular(1.0, 0.8, 0.0, 1.0);
 float material_shininess = 100.0;
-
-color4 ambient_product = light_ambient * material_ambient;
 color4 diffuse_product = light_diffuse * material_diffuse;
-color4 specular_product = light_specular * material_specular;
 
 
 void initCube()
@@ -173,8 +164,27 @@ void shaderSetup(void)
 	glClearColor(1.0, 1.0, 1.0, 1.0);        /* Thiết lập màu trắng là màu xóa màn hình*/
 }
 
-void toMau() {
-	material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau vat
+void toMau(string mau) {
+		//material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau xanh
+	if( mau == "black")
+		material_diffuse = vec4(0.0, 0.0, 0.0, 1.0); // black
+	else if( mau == "red")
+		material_diffuse = vec4(1.0, 0.0, 0.0, 1.0); // red
+	else if( mau == "yellow")
+		material_diffuse = vec4(1.0, 1.0, 0.0, 1.0); // yellow
+	else if( mau == "green")
+		material_diffuse = vec4(0.0, 1.0, 0.0, 1.0); // green
+	else if( mau == "blue")
+		material_diffuse = vec4(0.0, 0.0, 1.0, 1.0); // blue
+	else if( mau == "magenta")
+		material_diffuse = vec4(1.0, 0.0, 1.0, 1.0); // magenta
+	else if( mau == "orange")
+		material_diffuse = vec4(1.0, 0.5, 0.0, 1.0); // orange
+	else if( mau == "orange")
+		material_diffuse = vec4(0.0, 1.0, 1.0, 1.0); // cyan
+	else 
+		material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau xanh
+
 	diffuse_product = light_diffuse * material_diffuse;
 	glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
 }
@@ -182,7 +192,7 @@ void toMau() {
 void khoi(GLfloat w, GLfloat h, GLfloat l) {
 	instance = Scale(w, h, l);
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
-	toMau();
+	toMau("green");
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);    /*Vẽ các tam giác*/
 	glutSwapBuffers();
 }

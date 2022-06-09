@@ -1,0 +1,8 @@
+﻿  main.cpp
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(41,43): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(140,41): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(145,44): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(146,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(186,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(219,16): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  OpenGL.vcxproj -> D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\Debug\OpenGL.exe
