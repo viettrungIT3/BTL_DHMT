@@ -189,18 +189,40 @@ void toMau(string mau) {
 	glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
 }
 
-void khoi(GLfloat w, GLfloat h, GLfloat l) {
+mat4 instance_trans;
+
+void form(GLfloat w, GLfloat h, GLfloat l) {
 	instance = Scale(w, h, l);
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance);
-	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, instance * instance_trans * model);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);    /*Vẽ các tam giác*/
 	glutSwapBuffers();
 }
 
+GLfloat WIDTH_house = 0.02, HEIGH_house = 0.5, LONG_house = 1.5;
+mat4 instance_house;
+
+void houseFrame() {
+	instance_house = Translate( WIDTH_house / 2.0, HEIGH_house/2.0, LONG_house/2.0) * Scale(WIDTH_house, HEIGH_house, LONG_house);
+	toMau("err");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	instance_house = Translate(LONG_house/2.0, HEIGH_house/2.0, WIDTH_house/2.0) * Scale(LONG_house, HEIGH_house, WIDTH_house);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	instance_house = Translate(LONG_house/2.0, -WIDTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, WIDTH_house, LONG_house);
+	toMau("blue");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
 GLfloat zNear = 1, zFar = 10.0;
-GLfloat Xeye = 0, Yeye = 0, Zeye = 2;
+GLfloat Xeye = LONG_house * sqrt(2), Yeye = 0.5, Zeye = LONG_house * sqrt(2);
 
 void display(void)
 {
@@ -216,7 +238,9 @@ void display(void)
 	projection = Frustum(l, r, bottom, top, zNear, zFar);
 	glUniformMatrix4fv(projection_loc, 1, GL_TRUE, projection);
 
-	khoi(1, 1, 0.2);
+	houseFrame();
+
+	glutSwapBuffers();
 }
 
 //void reshape(int width, int height)
