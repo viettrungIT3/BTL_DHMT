@@ -314,20 +314,16 @@ void keyboard(unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'e':
-		if ( Xeye >= 0.25)
+		if ( Xeye > 0.25)
 		{
 			Xeye -= 0.1;
-			if (Xeye < 0.25)
-			{
-				Xeye += 0.1;
-			}
 			Zeye = sqrt(2* XeyeTemp * XeyeTemp - Xeye * Xeye);
 		}
 		
 		glutPostRedisplay();
 		break;
 	case 'E':
-		if (Xeye <= 4)
+		if (Xeye < XeyeTemp * sqrt(2) - 0.1)
 		{
 			Xeye += 0.1;
 			Zeye = sqrt(2 * XeyeTemp * XeyeTemp - Xeye * Xeye);

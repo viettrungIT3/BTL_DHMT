@@ -29,11 +29,10 @@ D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(236,60): warning C424
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(236,41): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(236,147): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(319,15): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(322,16): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(332,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(346,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(347,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(348,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(355,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(362,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(328,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(342,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(343,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(344,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(351,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\OpenGL\main.cpp(358,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
   OpenGL.vcxproj -> D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\Debug\OpenGL.exe
