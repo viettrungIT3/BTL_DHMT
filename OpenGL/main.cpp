@@ -190,26 +190,26 @@ void toMau(string mau) {
 }
 
 mat4 instance_trans;
-GLfloat WIDTH_house = 0.02, HEIGH_house = 0.4, LONG_house = 1.0;
+GLfloat DEPTH_house = 0.02, HEIGH_house = 0.4, LONG_house = 1.0;
 mat4 instance_house;
 
 // Nhà
 void houseFrame() {
 	instance_house = identity();
 	// mặt 1
-	instance_house = Translate( WIDTH_house / 2.0, HEIGH_house/2.0, LONG_house/2.0) * Scale(WIDTH_house, HEIGH_house, LONG_house);
+	instance_house = Translate( DEPTH_house / 2.0, HEIGH_house/2.0, LONG_house/2.0) * Scale(DEPTH_house, HEIGH_house, LONG_house);
 	toMau("magenta");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// mặt 2
-	instance_house = Translate(LONG_house/2.0, HEIGH_house/2.0, WIDTH_house/2.0) * Scale(LONG_house, HEIGH_house, WIDTH_house);
+	instance_house = Translate(LONG_house/2.0, HEIGH_house/2.0, DEPTH_house/2.0) * Scale(LONG_house, HEIGH_house, DEPTH_house);
 	toMau("magenta");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// nền
-	instance_house = Translate(LONG_house/2.0, WIDTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, WIDTH_house, LONG_house);
+	instance_house = Translate(LONG_house/2.0, DEPTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, DEPTH_house, LONG_house);
 	toMau("err");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
@@ -217,35 +217,44 @@ void houseFrame() {
 
 GLfloat WIDTH_stove = 0.2, HEIGH_stove = 0.2, LONG_stove = 0.5, DEPTH_stove = 0.01;
 GLfloat WIDTH_sink = 0.2, HEIGH_sink = 0.04, LONG_sink = 0.25, DEPTH_sink = 0.03;
+GLfloat WIDTH_eStove = 0.18, HEIGH_eStove = 0.03, LONG_eStove = 0.3, r_eStove;
 mat4 instance_stove;
+// Bếp 
+void electricStove() {
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18, HEIGH_stove/2 + HEIGH_eStove / 2.0, WIDTH_eStove / 2.0) * Scale(LONG_eStove, HEIGH_eStove, WIDTH_eStove);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
 // bồn rửa
 void sink() {
 	// mặt 1
-	instance_stove = Translate(WIDTH_house + DEPTH_sink/2, HEIGH_stove/2 - HEIGH_sink/2, LONG_stove * 1.25) * Scale(DEPTH_sink, HEIGH_sink, LONG_sink);
+	instance_stove = Translate(DEPTH_house + DEPTH_sink/2, HEIGH_stove/2 - HEIGH_sink/2, LONG_stove * 1.25) * Scale(DEPTH_sink, HEIGH_sink, LONG_sink);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// mặt 3
-	instance_stove = Translate(WIDTH_house - DEPTH_sink*1.5 + WIDTH_sink, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25) * Scale(DEPTH_sink, HEIGH_sink, LONG_sink);
+	instance_stove = Translate(DEPTH_house - DEPTH_sink*1.5 + WIDTH_sink, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25) * Scale(DEPTH_sink, HEIGH_sink, LONG_sink);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// mặt 2
-	instance_stove = Translate(WIDTH_house + WIDTH_sink/2 - DEPTH_sink/2, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25 + LONG_sink/2) * Scale(WIDTH_sink - DEPTH_sink, HEIGH_sink, DEPTH_sink);
+	instance_stove = Translate(DEPTH_house + WIDTH_sink/2 - DEPTH_sink/2, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25 + LONG_sink/2) * Scale(WIDTH_sink - DEPTH_sink, HEIGH_sink, DEPTH_sink);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 	
 	// mặt 4
-	instance_stove = Translate(WIDTH_house + WIDTH_sink / 2 - DEPTH_sink/2, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25 - LONG_sink / 2) * Scale(WIDTH_sink - DEPTH_sink, HEIGH_sink, DEPTH_sink);
+	instance_stove = Translate(DEPTH_house + WIDTH_sink / 2 - DEPTH_sink/2, HEIGH_stove / 2 - HEIGH_sink / 2, LONG_stove * 1.25 - LONG_sink / 2) * Scale(WIDTH_sink - DEPTH_sink, HEIGH_sink, DEPTH_sink);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// mặt đáy
-	instance_stove = Translate(WIDTH_house + WIDTH_sink / 2 - DEPTH_sink, HEIGH_stove / 2 - HEIGH_sink / 2 - DEPTH_sink, LONG_stove * 1.25) * Scale(WIDTH_sink - DEPTH_sink * 2, DEPTH_sink/2, LONG_sink);
+	instance_stove = Translate(DEPTH_house + WIDTH_sink / 2 - DEPTH_sink, HEIGH_stove / 2 - HEIGH_sink / 2 - DEPTH_sink, LONG_stove * 1.25) * Scale(WIDTH_sink - DEPTH_sink * 2, DEPTH_sink/2, LONG_sink);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
@@ -266,8 +275,8 @@ void stoveTableFrame() {
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	// bồn rửa
-	sink();
+	electricStove();	// bếp điện
+	sink();	// bồn rửa
 }
 
 
