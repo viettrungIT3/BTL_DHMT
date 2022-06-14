@@ -233,18 +233,17 @@ void stoveTableFrame() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// bồn rửa
-	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0, WIDTH_stove / 2.0 + LONG_stove) * Scale(WIDTH_stove, DEPTH_stove, WIDTH_stove);
+	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0, WIDTH_stove * 0.75 + LONG_stove ) * Scale(WIDTH_stove, DEPTH_stove, WIDTH_stove * 1.5);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
-
 }
 
 
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
 GLfloat zNear = 1, zFar = 10.0;
-GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 2;
+GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 3;
 GLfloat Xeye = XeyeTemp, Yeye = HEIGH_Temp, Zeye = XeyeTemp;
 
 void display(void)
@@ -347,6 +346,20 @@ void keyboard(unsigned char key, int x, int y)
 			Xeye -= XeyeTemp / 10.0;
 			Yeye -= HEIGH_Temp / 10.0;
 			Zeye -= XeyeTemp / 10.0; 
+		}
+		glutPostRedisplay();
+		break;
+	case 't':
+		if (Yeye >= 0.4)
+		{
+			Yeye -= HEIGH_Temp / 10.0;
+		}
+		glutPostRedisplay();
+		break;
+	case 'T':
+		if (Yeye <= 3)
+		{
+			Yeye += HEIGH_Temp / 10.0;
 		}
 		glutPostRedisplay();
 		break;
