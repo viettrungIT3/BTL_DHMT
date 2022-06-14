@@ -233,7 +233,7 @@ void stoveTableFrame() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// bồn rửa
-	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0, WIDTH_stove * 0.75 + LONG_stove ) * Scale(WIDTH_stove, DEPTH_stove, WIDTH_stove * 1.5);
+	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0 - DEPTH_stove * 2, WIDTH_stove * 0.75 + LONG_stove ) * Scale(WIDTH_stove, DEPTH_stove * 4, WIDTH_stove * 1.5);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
