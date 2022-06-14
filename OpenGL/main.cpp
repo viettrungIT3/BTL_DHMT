@@ -367,9 +367,10 @@ void keyboard(unsigned char key, int x, int y)
 }
 
 /* Keywork
-	e, E: thay đổi góc nhìn
+	e, E: thay đổi góc nhìn sang trái/phải
 	r: đặt lại góc nhìn mặc định
 	R: zoom góc quay
+	t, T: góc nhìn xuống/lên theo chiều y
 */
 
 
