@@ -233,18 +233,17 @@ void stoveTableFrame() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// bồn rửa
-	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0, WIDTH_stove / 2.0 + LONG_stove) * Scale(WIDTH_stove, DEPTH_stove, WIDTH_stove);
+	instance_stove = Translate(WIDTH_stove / 2.0, HEIGH_stove / 2.0, WIDTH_stove * 0.75 + LONG_stove ) * Scale(WIDTH_stove, DEPTH_stove, WIDTH_stove * 1.5);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
-
 }
 
 
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
 GLfloat zNear = 1, zFar = 10.0;
-GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 2;
+GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 3;
 GLfloat Xeye = XeyeTemp, Yeye = HEIGH_Temp, Zeye = XeyeTemp;
 
 void display(void)
@@ -315,20 +314,16 @@ void keyboard(unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'e':
-		if ( Xeye >= 0.25)
+		if ( Xeye > 0.25)
 		{
 			Xeye -= 0.1;
-			if (Xeye < 0.25)
-			{
-				Xeye += 0.1;
-			}
 			Zeye = sqrt(2* XeyeTemp * XeyeTemp - Xeye * Xeye);
 		}
 		
 		glutPostRedisplay();
 		break;
 	case 'E':
-		if (Xeye <= 4)
+		if (Xeye < XeyeTemp * sqrt(2) - 0.1)
 		{
 			Xeye += 0.1;
 			Zeye = sqrt(2 * XeyeTemp * XeyeTemp - Xeye * Xeye);
@@ -350,13 +345,28 @@ void keyboard(unsigned char key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;
+	case 't':
+		if (Yeye >= 0.4)
+		{
+			Yeye -= HEIGH_Temp / 10.0;
+		}
+		glutPostRedisplay();
+		break;
+	case 'T':
+		if (Yeye <= 3)
+		{
+			Yeye += HEIGH_Temp / 10.0;
+		}
+		glutPostRedisplay();
+		break;
 	}
 }
 
 /* Keywork
-	e, E: thay đổi góc nhìn
+	e, E: thay đổi góc nhìn sang trái/phải
 	r: đặt lại góc nhìn mặc định
 	R: zoom góc quay
+	t, T: góc nhìn xuống/lên theo chiều y
 */
 
 
