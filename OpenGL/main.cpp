@@ -219,12 +219,37 @@ GLfloat WIDTH_stove = 0.2, HEIGH_stove = 0.2, LONG_stove = 0.5, DEPTH_stove = 0.
 GLfloat WIDTH_sink = 0.2, HEIGH_sink = 0.04, LONG_sink = 0.25, DEPTH_sink = 0.03;
 GLfloat WIDTH_eStove = 0.18, HEIGH_eStove = 0.03, LONG_eStove = 0.3, r_eStove;
 mat4 instance_stove;
+mat4 m;
+
+// ngọn lửa
+void fire()
+{
+	for (float i = 0; i < 360; i++)
+	{
+		m = RotateY(i) * Scale(0.03, 0.01, 0.09);
+		//material_diffuse = vec4(1, 0.4, 0.23, 0.3);  // mau vat
+		//diffuse_product = light_diffuse * material_diffuse;
+		//glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
+		toMau("red");
+		glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove * m);
+		glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	}
+}
 // Bếp 
 void electricStove() {
+	// mặt bếp
 	instance_stove = Translate(LONG_eStove / 2.0 + 0.18, HEIGH_stove/2 + HEIGH_eStove / 2.0, WIDTH_eStove / 2.0) * Scale(LONG_eStove, HEIGH_eStove, WIDTH_eStove);
-	toMau("red");
+	toMau("err");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// ngọn lửa 1
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 - 0.08, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
+	fire();
+
+	// ngọn lửa 2
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 + 0.08, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
+	fire();
 }
 
 // bồn rửa
