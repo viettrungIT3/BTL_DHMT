@@ -190,14 +190,6 @@ void toMau(string mau) {
 }
 
 mat4 instance_trans;
-
-void form(GLfloat w, GLfloat h, GLfloat l) {
-	instance = Scale(w, h, l);
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, instance * instance_trans * model);
-	glDrawArrays(GL_TRIANGLES, 0, NumPoints);    /*Vẽ các tam giác*/
-	glutSwapBuffers();
-}
-
 GLfloat WIDTH_house = 0.02, HEIGH_house = 0.5, LONG_house = 1.5;
 mat4 instance_house;
 
@@ -212,7 +204,7 @@ void houseFrame() {
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	instance_house = Translate(LONG_house/2.0, -WIDTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, WIDTH_house, LONG_house);
+	instance_house = Translate(LONG_house/2.0, WIDTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, WIDTH_house, LONG_house);
 	toMau("blue");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
@@ -222,7 +214,8 @@ void houseFrame() {
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
 GLfloat zNear = 1, zFar = 10.0;
-GLfloat Xeye = LONG_house * sqrt(2), Yeye = 0.5, Zeye = LONG_house * sqrt(2);
+GLfloat XeyeTemp = LONG_house * 2;
+GLfloat Xeye = XeyeTemp, Yeye = HEIGH_house, Zeye = XeyeTemp;
 
 void display(void)
 {
@@ -287,6 +280,33 @@ void keyboard(unsigned char key, int x, int y)
 		break;
 	case 'Z':
 		model *= RotateZ(-dr);
+		glutPostRedisplay();
+		break;
+	case 'e':
+		if ( Xeye >= 0.25)
+		{
+			Xeye -= 0.1;
+			if (Xeye < 0.25)
+			{
+				Xeye += 0.1;
+			}
+			Zeye = sqrt(2* XeyeTemp * XeyeTemp - Xeye * Xeye);
+		}
+		
+		glutPostRedisplay();
+		break;
+	case 'E':
+		if (Xeye <= 4)
+		{
+			Xeye += 0.1;
+			Zeye = sqrt(2 * XeyeTemp * XeyeTemp - Xeye * Xeye);
+		}
+		glutPostRedisplay();
+		break;
+	case 'r':
+		Xeye = XeyeTemp;
+		Yeye = HEIGH_house;
+		Zeye = XeyeTemp;
 		glutPostRedisplay();
 		break;
 	}
