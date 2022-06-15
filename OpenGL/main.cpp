@@ -219,19 +219,19 @@ GLfloat WIDTH_stove = 0.2, HEIGH_stove = 0.2, LONG_stove = 0.5, DEPTH_stove = 0.
 GLfloat WIDTH_sink = 0.2, HEIGH_sink = 0.04, LONG_sink = 0.25, DEPTH_sink = 0.03;
 GLfloat WIDTH_eStove = 0.18, HEIGH_eStove = 0.03, LONG_eStove = 0.3, r_eStove;
 mat4 instance_stove;
-mat4 m;
+mat4 instance_fire;
 
 // ngọn lửa
 void fire()
 {
 	for (float i = 0; i < 360; i++)
 	{
-		m = RotateY(i) * Scale(0.03, 0.01, 0.09);
+		instance_fire = RotateY(i) * Scale(0.03, 0.01, 0.09);
 		//material_diffuse = vec4(1, 0.4, 0.23, 0.3);  // mau vat
 		//diffuse_product = light_diffuse * material_diffuse;
 		//glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
 		toMau("red");
-		glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove * m);
+		glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove * instance_fire);
 		glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 	}
 }
@@ -304,10 +304,69 @@ void stoveTableFrame() {
 	sink();	// bồn rửa
 }
 
+// Tủ lạnh
+GLfloat cao_tuLanh = 0.22, rong_tuLanh = 0.15, dai_tuLanh = 0.2, day_tuLanh = 0.02;
+//GLfloat rong_kedo = 0.7, dai_taynam = 0.5, rong_taynam = 0.05, day_taynam = 0.1;
+//GLfloat rong_ngandung = 0.56, cao_ngandung = 0.46;
+//GLfloat rong_ngancanh = 0.3, dai_ngancanh = 0.4, cao_ngancanh = 0.3;
+
+mat4 instance_canh, instance_tuLanh, dc, xoay1;
+//GLfloat theta[10];
+void canh()
+{
+	
+}
+
+void voTuLanh()
+{
+	instance_tuLanh = identity();
+	// mặt trái
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + day_tuLanh / 2.0, cao_tuLanh / 2.0, rong_tuLanh / 2.0) * Scale(day_tuLanh, cao_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt phải
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + day_tuLanh / 2.0 + dai_tuLanh, cao_tuLanh / 2.0, rong_tuLanh / 2.0) * Scale(day_tuLanh, cao_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt sau
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, cao_tuLanh / 2.0, day_tuLanh / 2.0) * Scale(dai_tuLanh, cao_tuLanh, day_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt dưới
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, day_tuLanh / 2.0, rong_tuLanh/2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	 //mặt giữa
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, day_tuLanh / 2.0 + 2 * cao_tuLanh / 3.0, rong_tuLanh/2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt trên
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh/2, day_tuLanh / 2.0 + cao_tuLanh, rong_tuLanh/2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+GLfloat dtt, dtp;
+void tuLanh()
+{
+	voTuLanh();
+}
+
+
 
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
-GLfloat zNear = 1, zFar = 10.0;
+GLfloat zNear = 2, zFar = 10.0;
 GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 3;
 GLfloat Xeye = XeyeTemp, Yeye = HEIGH_Temp, Zeye = XeyeTemp;
 
@@ -327,7 +386,7 @@ void display(void)
 
 	houseFrame();	// nhà
 	stoveTableFrame();	// bàn bếp
-
+	tuLanh();	// tủ lạnh
 
 	glutSwapBuffers();
 }
