@@ -219,19 +219,19 @@ GLfloat WIDTH_stove = 0.2, HEIGH_stove = 0.2, LONG_stove = 0.5, DEPTH_stove = 0.
 GLfloat WIDTH_sink = 0.2, HEIGH_sink = 0.04, LONG_sink = 0.25, DEPTH_sink = 0.03;
 GLfloat WIDTH_eStove = 0.18, HEIGH_eStove = 0.03, LONG_eStove = 0.3, r_eStove;
 mat4 instance_stove;
-mat4 m;
+mat4 instance_fire;
 
 // ngọn lửa
 void fire()
 {
 	for (float i = 0; i < 360; i++)
 	{
-		m = RotateY(i) * Scale(0.03, 0.01, 0.09);
+		instance_fire = RotateY(i) * Scale(0.03, 0.01, 0.09);
 		//material_diffuse = vec4(1, 0.4, 0.23, 0.3);  // mau vat
 		//diffuse_product = light_diffuse * material_diffuse;
 		//glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
 		toMau("red");
-		glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove * m);
+		glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove * instance_fire);
 		glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 	}
 }
@@ -304,10 +304,127 @@ void stoveTableFrame() {
 	sink();	// bồn rửa
 }
 
+// Tủ lạnh
+GLfloat cao_tuLanh = 0.2, rong_tuLanh = 0.12, dai_tuLanh = 0.13, day_tuLanh = 0.005;
+
+
+mat4 instance_tuLanh, m;
+
+void canhTuTren()
+{
+	//cánh tủ trên
+	instance_tuLanh = Translate( -day_tuLanh/2, day_tuLanh/2, 0) * Scale(dai_tuLanh + day_tuLanh, cao_tuLanh/3 + day_tuLanh, day_tuLanh);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//tay nắm của
+	instance_tuLanh = Translate(-dai_tuLanh/2 + 0.01, 0, day_tuLanh) * Scale(day_tuLanh, cao_tuLanh/8, day_tuLanh);
+	toMau("yellow");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void trucTren()
+{
+	instance_tuLanh = Translate(0, 0, 0) * Scale(day_tuLanh, cao_tuLanh / 3, day_tuLanh);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void canhTuDuoi()
+{
+	//cánh tủ dưới
+	instance_tuLanh = Translate(-day_tuLanh / 2, day_tuLanh / 2, 0) * Scale(dai_tuLanh + day_tuLanh, cao_tuLanh * 2 / 3 + day_tuLanh, day_tuLanh);
+	toMau("blue");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//tay nắm cửa
+	instance_tuLanh = Translate(-dai_tuLanh / 2 + 0.01, 0, day_tuLanh) * Scale(day_tuLanh, cao_tuLanh / 6, day_tuLanh);
+	toMau("yellow");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void trucDuoi()
+{
+	instance_tuLanh = Translate(0, 0, 0) * Scale(day_tuLanh, cao_tuLanh / 3, day_tuLanh);
+	toMau("blue");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void voTuLanh()
+{
+	instance_tuLanh = identity();
+	// mặt trái
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + day_tuLanh / 2.0, cao_tuLanh / 2.0, rong_tuLanh / 2.0) * Scale(day_tuLanh, cao_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt phải
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + day_tuLanh / 2.0 + dai_tuLanh, cao_tuLanh / 2.0, rong_tuLanh / 2.0) * Scale(day_tuLanh, cao_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt sau
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, cao_tuLanh / 2.0, day_tuLanh / 2.0) * Scale(dai_tuLanh, cao_tuLanh, day_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt dưới
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, day_tuLanh / 2.0, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	//mặt giữa
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0, day_tuLanh / 2.0 + 2 * cao_tuLanh / 3.0, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt trên
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh / 2, day_tuLanh / 2.0 + cao_tuLanh, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+GLfloat dtt, dtp;
+void tuLanh()
+{
+	instance_tuLanh = identity();
+	// đế
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh / 2, day_tuLanh * 2, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh * 4, rong_tuLanh);
+	toMau("err");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	voTuLanh();	// vỏ tủ lạnh
+
+	// Cánh tủ trên của tủ lạnh
+	m = identity();
+	m = m * Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh + day_tuLanh/2, cao_tuLanh - cao_tuLanh/6, day_tuLanh / 2.0 + rong_tuLanh) * RotateY(theta[0]);
+	trucTren();
+	m = m * Translate(-dai_tuLanh/2, 0, 0);
+	canhTuTren();
+
+	// Cánh tủ dưới của tủ lạnh
+	m = identity();
+	m = m * Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh + day_tuLanh / 2,  cao_tuLanh * 2 / 6, day_tuLanh / 2.0 + rong_tuLanh) * RotateY(theta[1]);
+	trucDuoi();
+	m = m * Translate(-dai_tuLanh / 2, 0, 0);
+	canhTuDuoi();
+}
+
+
 
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
-GLfloat zNear = 1, zFar = 10.0;
+GLfloat zNear = 2, zFar = 10.0;
 GLfloat XeyeTemp = LONG_house * 2, HEIGH_Temp = HEIGH_house * 3;
 GLfloat Xeye = XeyeTemp, Yeye = HEIGH_Temp, Zeye = XeyeTemp;
 
@@ -327,7 +444,7 @@ void display(void)
 
 	houseFrame();	// nhà
 	stoveTableFrame();	// bàn bếp
-
+	tuLanh();	// tủ lạnh
 
 	glutSwapBuffers();
 }
@@ -379,12 +496,12 @@ void keyboard(unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'e':
-		if ( Xeye > 0.25)
+		if (Xeye > 0.25)
 		{
 			Xeye -= 0.1;
-			Zeye = sqrt(2* XeyeTemp * XeyeTemp - Xeye * Xeye);
+			Zeye = sqrt(2 * XeyeTemp * XeyeTemp - Xeye * Xeye);
 		}
-		
+
 		glutPostRedisplay();
 		break;
 	case 'E':
@@ -402,11 +519,11 @@ void keyboard(unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'R':
-		if ( Xeye >= 0.4 && Yeye >= 0.4 && Zeye >= 0.4)
+		if (Xeye >= 0.4 && Yeye >= 0.4 && Zeye >= 0.4)
 		{
 			Xeye -= XeyeTemp / 10.0;
 			Yeye -= HEIGH_Temp / 10.0;
-			Zeye -= XeyeTemp / 10.0; 
+			Zeye -= XeyeTemp / 10.0;
 		}
 		glutPostRedisplay();
 		break;
@@ -424,6 +541,40 @@ void keyboard(unsigned char key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;
+	case 'a':
+		if (theta[0] >= 0 && theta[0] < 100)
+		{
+			theta[0] += 5;
+			cout << "\nDang mo canh tren tu lanh voi goc: " << theta[0];
+		}
+		glutPostRedisplay();
+		break;
+
+	case 'A':
+		if (theta[0] > 0 && theta[0] <= 100)
+		{
+			theta[0] -= 5;
+			cout << "\nDang dong canh tren tu lanh voi goc: " << theta[0];
+		}
+		glutPostRedisplay();
+		break;
+	case 's':
+		if (theta[1] >= 0 && theta[1] < 100)
+		{
+			theta[1] += 5;
+			cout << "\nDang mo canh duoi tu lanh voi goc: " << theta[1];
+		}
+		glutPostRedisplay();
+		break;
+
+	case 'S':
+		if (theta[1] > 0 && theta[1] <= 100)
+		{
+			theta[1] -= 5;
+			cout << "\nDang dong canh duoi tu lanh voi goc: " << theta[1];
+		}
+		glutPostRedisplay();
+		break;
 	}
 }
 
@@ -432,6 +583,8 @@ void keyboard(unsigned char key, int x, int y)
 	r: đặt lại góc nhìn mặc định
 	R: zoom góc quay
 	t, T: góc nhìn xuống/lên theo chiều y
+	a, A: Mở/đóng cánh trên tủ lạnh
+	a, S: Mở/đóng cánh dưới tủ lanh 
 */
 
 
