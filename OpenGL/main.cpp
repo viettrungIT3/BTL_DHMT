@@ -305,16 +305,33 @@ void stoveTableFrame() {
 }
 
 // Tủ lạnh
-GLfloat cao_tuLanh = 0.2, rong_tuLanh = 0.12, dai_tuLanh = 0.15, day_tuLanh = 0.005;
+GLfloat cao_tuLanh = 0.2, rong_tuLanh = 0.12, dai_tuLanh = 0.13, day_tuLanh = 0.005;
 //GLfloat rong_kedo = 0.7, dai_taynam = 0.5, rong_taynam = 0.05, day_taynam = 0.1;
 //GLfloat rong_ngandung = 0.56, cao_ngandung = 0.46;
 //GLfloat rong_ngancanh = 0.3, dai_ngancanh = 0.4, cao_ngancanh = 0.3;
 
-mat4 instance_canh, instance_tuLanh, dc, xoay1;
-//GLfloat theta[10];
-void canh()
+mat4 instance_canh, instance_tuLanh, m;
+
+void canhTuTren()
 {
-	
+	//cánh tủ trên
+	instance_tuLanh = Translate( -day_tuLanh/2, day_tuLanh/2, 0) * Scale(dai_tuLanh + day_tuLanh, cao_tuLanh/3 + day_tuLanh, day_tuLanh);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//tay nắm của
+	instance_tuLanh = Translate(-dai_tuLanh/2 + 0.01, 0, day_tuLanh) * Scale(day_tuLanh, cao_tuLanh/8, day_tuLanh);
+	toMau("yellow");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void trucTren()
+{
+	instance_tuLanh = Translate(0, 0, 0) * Scale(day_tuLanh, cao_tuLanh / 3, day_tuLanh);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
 void voTuLanh()
@@ -367,6 +384,12 @@ void tuLanh()
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	voTuLanh();
+
+	m = identity();
+	m = m * Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh + day_tuLanh/2, cao_tuLanh - cao_tuLanh/6, day_tuLanh / 2.0 + rong_tuLanh) * RotateY(theta[0]);
+	trucTren();
+	m = m * Translate(-dai_tuLanh/2, 0, 0);
+	canhTuTren();
 }
 
 
@@ -490,6 +513,34 @@ void keyboard(unsigned char key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;
+	case 'a':
+		if (theta[0] >= 0 && theta[0] < 100)
+		{
+			theta[0] += 5;
+			cout << "\nDang mo canh tren tu lanh voi goc: " << theta[0];
+		}
+		glutPostRedisplay();
+		break;
+
+	case 'A':
+		if ( theta[0] > 0 && theta[0] <= 100)
+		{
+			theta[0] -= 5;
+			cout << "\nDang dong canh tren tu lanh voi goc: " << theta[0];
+		}
+		glutPostRedisplay();
+		break;
+	case 'B':
+
+		theta[1] += 5;
+		glutPostRedisplay();
+		break;
+
+	case 'b':
+		theta[1] -= 5;
+		glutPostRedisplay();
+		break;
+
 	}
 }
 
@@ -498,6 +549,7 @@ void keyboard(unsigned char key, int x, int y)
 	r: đặt lại góc nhìn mặc định
 	R: zoom góc quay
 	t, T: góc nhìn xuống/lên theo chiều y
+	a, A: Mở/đóng cánh trên tủ lạnh
 */
 
 

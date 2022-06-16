@@ -1,76 +1,76 @@
-﻿  InitShader.cpp
-  main.cpp
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(41,43): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(140,41): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(145,44): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(146,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(186,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(193,27): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(193,46): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(200,76): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(200,60): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(200,42): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(206,73): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(206,56): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(206,39): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(212,72): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(212,56): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(212,39): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(218,26): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(218,45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(218,83): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(219,25): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(219,44): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(219,81): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(220,28): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(220,49): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(220,68): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(229,54): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(241,104): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(241,69): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(241,47): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(247,107): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(247,54): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(251,107): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(251,54): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(258,98): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(264,117): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(264,58): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(270,124): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(276,126): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(282,130): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(292,78): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(292,60): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(292,41): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(298,78): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(298,59): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(298,40): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(308,25): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(308,45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(308,64): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(308,84): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(324,159): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(324,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(324,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(330,172): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(330,153): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(330,128): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(336,158): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(336,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(336,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(342,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(342,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(348,146): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(348,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(354,163): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(354,128): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(364,111): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(450,15): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(459,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(473,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(474,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(475,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(482,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\OpenGL\main.cpp(489,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
-  Generating Code...
-  OpenGL.vcxproj -> D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\New folder\BTL_DHMT\Debug\OpenGL.exe
+﻿  main.cpp
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(41,43): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(140,41): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(145,44): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(146,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(186,45): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(193,27): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(193,46): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(200,76): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(200,60): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(200,42): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(206,73): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(206,56): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(206,39): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(212,72): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(212,56): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(212,39): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(218,26): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(218,45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(218,83): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(219,25): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(219,44): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(219,81): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(220,28): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(220,49): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(220,68): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(229,54): warning C4305: 'argument': truncation from 'double' to 'const GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(241,104): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(241,69): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(241,47): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(247,107): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(247,54): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(251,107): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(251,54): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(258,98): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(264,117): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(264,58): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(270,124): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(276,126): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(282,130): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(292,78): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(292,60): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(292,41): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(298,78): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(298,59): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(298,40): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(308,25): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(308,45): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(308,64): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(308,84): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(323,44): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(341,159): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(341,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(341,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(347,172): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(347,153): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(347,128): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(353,158): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(353,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(353,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(359,140): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(359,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(365,146): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(365,109): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(371,163): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(371,128): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(381,111): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(389,172): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(473,15): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(482,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(496,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(497,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(498,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(505,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(512,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+  OpenGL.vcxproj -> D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\Debug\OpenGL.exe
