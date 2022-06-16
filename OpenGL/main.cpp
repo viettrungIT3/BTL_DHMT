@@ -215,9 +215,10 @@ void houseFrame() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
-GLfloat WIDTH_stove = 0.2, HEIGH_stove = 0.2, LONG_stove = 0.5, DEPTH_stove = 0.01;
-GLfloat WIDTH_sink = 0.2, HEIGH_sink = 0.04, LONG_sink = 0.25, DEPTH_sink = 0.03;
-GLfloat WIDTH_eStove = 0.18, HEIGH_eStove = 0.03, LONG_eStove = 0.3, r_eStove;
+// Bàn bếp
+GLfloat WIDTH_stove = 0.18, HEIGH_stove = 0.2, LONG_stove = 0.4, DEPTH_stove = 0.01;
+GLfloat WIDTH_sink = 0.18, HEIGH_sink = 0.04, LONG_sink = 0.2, DEPTH_sink = 0.03;
+GLfloat WIDTH_eStove = 0.15, HEIGH_eStove = 0.03, LONG_eStove = 0.2, r_eStove;
 mat4 instance_stove;
 mat4 instance_fire;
 
@@ -226,7 +227,7 @@ void fire()
 {
 	for (float i = 0; i < 360; i++)
 	{
-		instance_fire = RotateY(i) * Scale(0.03, 0.01, 0.09);
+		instance_fire = RotateY(i) * Scale(0.01, 0.01, 0.05);
 		//material_diffuse = vec4(1, 0.4, 0.23, 0.3);  // mau vat
 		//diffuse_product = light_diffuse * material_diffuse;
 		//glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
@@ -244,11 +245,11 @@ void electricStove() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// ngọn lửa 1
-	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 - 0.08, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 - LONG_eStove /4, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
 	fire();
 
 	// ngọn lửa 2
-	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 + 0.08, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18 + LONG_eStove /4, HEIGH_stove / 2 + HEIGH_eStove, WIDTH_eStove / 2.0);
 	fire();
 }
 
@@ -306,8 +307,6 @@ void stoveTableFrame() {
 
 // Tủ lạnh
 GLfloat cao_tuLanh = 0.2, rong_tuLanh = 0.12, dai_tuLanh = 0.13, day_tuLanh = 0.005;
-
-
 mat4 instance_tuLanh, m;
 
 void canhTuTren()
@@ -420,6 +419,9 @@ void tuLanh()
 	canhTuDuoi();
 }
 
+// Tủ bếp
+GLfloat cao_tuBep = 0.8, rong_tuBep = 0.12, dai_tuBep = 0.13, day_tuBep = 0.005;
+mat4 instance_tuBep;
 
 
 GLfloat l = -0.5, r = 0.5;
