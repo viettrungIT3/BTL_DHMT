@@ -320,11 +320,6 @@ void canh()
 void voTuLanh()
 {
 	instance_tuLanh = identity();
-	// đế
-	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh / 2, day_tuLanh * 2, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh * 4, rong_tuLanh);
-	toMau("err");
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
-	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 	// mặt trái
 	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + day_tuLanh / 2.0, cao_tuLanh / 2.0, rong_tuLanh / 2.0) * Scale(day_tuLanh, cao_tuLanh, rong_tuLanh);
 	toMau("green");
@@ -356,7 +351,7 @@ void voTuLanh()
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// mặt trên
-	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh/2, day_tuLanh / 2.0 + cao_tuLanh, rong_tuLanh/2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house + day_tuLanh * 4, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh / 2, day_tuLanh / 2.0 + cao_tuLanh, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh, rong_tuLanh);
 	toMau("green");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
@@ -364,6 +359,13 @@ void voTuLanh()
 GLfloat dtt, dtp;
 void tuLanh()
 {
+	instance_tuLanh = identity();
+	// đế
+	instance_tuLanh = Translate(DEPTH_house, DEPTH_house, DEPTH_house) * Translate(LONG_stove + dai_tuLanh / 2.0 + day_tuLanh / 2, day_tuLanh * 2, rong_tuLanh / 2) * Scale(dai_tuLanh + day_tuLanh, day_tuLanh * 4, rong_tuLanh);
+	toMau("err");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuLanh);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
 	voTuLanh();
 }
 
