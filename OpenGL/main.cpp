@@ -462,7 +462,7 @@ void khungTuBep() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
-void canhTuBepPhai()
+void canhTuBep()
 {
 	//cánh tủ phải
 	instance_tuBep = Scale(day_tuBep, cao_tuBep, dai_tuBep/2);
@@ -479,28 +479,41 @@ void trucTuBep()
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
-void tuBep() {
-	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+void tuBep(GLfloat z_dich, GLfloat xoay, GLfloat xoay1) {
+	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house + z_dich) * RotateY(xoay);
 	khungTuBep();
 
 	// cánh tủ phải
 	m = identity();
 	//instance_dichTuBep = identity();
 	instance_dichTuBep *= Translate( rong_tuBep, cao_tuBep/2, 0);
-	m = m * instance_dichTuBep * RotateY(theta[2]);
+	m = m * instance_dichTuBep * RotateY(xoay1);
 	trucTuBep();
-	m = m * Translate(0, 0, dai_tuBep/4);
-	canhTuBepPhai();
+	m = m * Translate(0, 0, dai_tuBep / 4);
+	canhTuBep();
 
 	// cánh tủ trái
 	m = identity();
-	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+	//instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
 	//instance_dichTuBep = identity();
-	instance_dichTuBep *= Translate(rong_tuBep, cao_tuBep / 2, dai_tuBep);
-	m = m * instance_dichTuBep * RotateY(-theta[3]);
+	instance_dichTuBep *= Translate(0, 0, dai_tuBep);
+	m = m * instance_dichTuBep * RotateY(-xoay1);
 	trucTuBep();
 	m = m * Translate(0, 0, -dai_tuBep / 4);
-	canhTuBepPhai();
+	canhTuBep();
+}
+
+void boTuBep() {
+	instance_dichTuBep = identity();
+	GLfloat z_dich = 0;
+	tuBep(z_dich, 0, theta[2]);	// Tủ 1
+
+	z_dich = dai_tuBep + day_tuBep;
+	tuBep(z_dich, 0, theta[3]);	// Tủ 2
+
+	z_dich = dai_tuBep * 2 + day_tuBep;
+	tuBep(z_dich, 0, theta[4]);	// Tủ 3
+
 }
 
 
@@ -527,7 +540,7 @@ void display(void)
 	houseFrame();	// nhà
 	stoveTableFrame();	// bàn bếp
 	tuLanh();	// tủ lạnh
-	tuBep();	// tủ bếp
+	boTuBep();	// tủ bếp
 
 	glutSwapBuffers();
 }
@@ -627,7 +640,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 'a':
 		if (theta[0] >= 0 && theta[0] < 100)
 		{
-			theta[0] += 5;
+			theta[0] += 10;
 			cout << "\nDang mo canh tren tu lanh voi goc: " << theta[0];
 		}
 		glutPostRedisplay();
@@ -636,7 +649,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 'A':
 		if (theta[0] > 0 && theta[0] <= 100)
 		{
-			theta[0] -= 5;
+			theta[0] -= 10;
 			cout << "\nDang dong canh tren tu lanh voi goc: " << theta[0];
 		}
 		glutPostRedisplay();
@@ -644,7 +657,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 's':
 		if (theta[1] >= 0 && theta[1] < 100)
 		{
-			theta[1] += 5;
+			theta[1] += 10;
 			cout << "\nDang mo canh duoi tu lanh voi goc: " << theta[1];
 		}
 		glutPostRedisplay();
@@ -653,7 +666,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 'S':
 		if (theta[1] > 0 && theta[1] <= 100)
 		{
-			theta[1] -= 5;
+			theta[1] -= 10;
 			cout << "\nDang dong canh duoi tu lanh voi goc: " << theta[1];
 		}
 		glutPostRedisplay();
@@ -661,12 +674,8 @@ void keyboard(unsigned char key, int x, int y)
 	case 'd':
 		if (theta[2] >= 0 && theta[2] < 90)
 		{
-			theta[2] += 5;
-			cout << "\nDang mo canh phai tu bep voi goc: " << theta[2];
-			glutPostRedisplay();
-		
-			theta[3] += 5;
-			cout << "\nDang dong canh trai tu bep voi goc: " << theta[3];
+			theta[2] += 10;
+			cout << "\nDang mo canh tu bep 1 voi goc: " << theta[2];
 			glutPostRedisplay();
 		}
 		break;
@@ -674,12 +683,42 @@ void keyboard(unsigned char key, int x, int y)
 	case 'D':
 		if (theta[2] > 0 && theta[2] <= 90)
 		{
-			theta[2] -= 5;
-			cout << "\nDang dong canh phai tu bep voi goc: " << theta[2];
+			theta[2] -= 10;
+			cout << "\nDang dong canh tu bep 1 voi goc: " << theta[2];
 			glutPostRedisplay();
+		}
+		break;
+	case 'f':
+		if (theta[3] >= 0 && theta[3] < 90)
+		{
+			theta[3] += 10;
+			cout << "\nDang mo canh tu bep 2 voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
 
-			theta[3] -= 5;
-			cout << "\nDang dong canh trai tu bep voi goc: " << theta[3];
+	case 'F':
+		if (theta[3] > 0 && theta[3] <= 90)
+		{
+			theta[3] -= 10;
+			cout << "\nDang dong canh tu bep 2 voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
+	case 'g':
+		if (theta[4] >= 0 && theta[4] < 90)
+		{
+			theta[4] += 10;
+			cout << "\nDang mo canh tu bep 3 voi goc: " << theta[4];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'G':
+		if (theta[4] > 0 && theta[4] <= 90)
+		{
+			theta[4] -= 10;
+			cout << "\nDang dong canh tu bep 3 voi goc: " << theta[4];
 			glutPostRedisplay();
 		}
 		break;
