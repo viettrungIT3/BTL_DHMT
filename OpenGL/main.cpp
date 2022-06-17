@@ -420,7 +420,7 @@ void tuLanh()
 }
 
 // Tủ bếp
-GLfloat cao_tuBep = 0.15, rong_tuBep = 0.12, dai_tuBep = 0.2, day_tuBep = 0.005;
+GLfloat cao_tuBep = 0.12, rong_tuBep = 0.1, dai_tuBep = 0.15, day_tuBep = 0.005;
 mat4 instance_tuBep, instance_dichTuBep;
 void khungTuBep() {
 	instance_tuBep = identity();
@@ -464,7 +464,7 @@ void khungTuBep() {
 
 void canhTuBep()
 {
-	//cánh tủ phải
+	//cánh tủ 
 	instance_tuBep = Scale(day_tuBep, cao_tuBep, dai_tuBep/2);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuBep);
@@ -479,8 +479,8 @@ void trucTuBep()
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
-void tuBep(GLfloat z_dich, GLfloat xoay, GLfloat xoay1) {
-	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house + z_dich) * RotateY(xoay);
+void tuBep(GLfloat xoay1, GLfloat xoay2) {
+	instance_dichTuBep *= Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
 	khungTuBep();
 
 	// cánh tủ phải
@@ -497,7 +497,7 @@ void tuBep(GLfloat z_dich, GLfloat xoay, GLfloat xoay1) {
 	//instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
 	//instance_dichTuBep = identity();
 	instance_dichTuBep *= Translate(0, 0, dai_tuBep);
-	m = m * instance_dichTuBep * RotateY(-xoay1);
+	m = m * instance_dichTuBep * RotateY(-xoay2);
 	trucTuBep();
 	m = m * Translate(0, 0, -dai_tuBep / 4);
 	canhTuBep();
@@ -506,14 +506,24 @@ void tuBep(GLfloat z_dich, GLfloat xoay, GLfloat xoay1) {
 void boTuBep() {
 	instance_dichTuBep = identity();
 	GLfloat z_dich = 0;
-	tuBep(z_dich, 0, theta[2]);	// Tủ 1
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(0, theta[2]);	// Tủ 2
 
 	z_dich = dai_tuBep + day_tuBep;
-	tuBep(z_dich, 0, theta[3]);	// Tủ 2
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[3], theta[3]);	// Tủ 3
 
 	z_dich = dai_tuBep * 2 + day_tuBep;
-	tuBep(z_dich, 0, theta[4]);	// Tủ 3
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[4], theta[4]);	// Tủ 4
 
+	z_dich = dai_tuBep * 3 + day_tuBep;
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[5], theta[5]);	// Tủ 5
+
+	z_dich = 0;
+	instance_dichTuBep = Translate(dai_tuBep + WIDTH_stove + 2*DEPTH_house, 0, z_dich) * RotateY(-90);
+	tuBep(theta[6], theta[6]);	// Tủ 1
 }
 
 
@@ -545,20 +555,6 @@ void display(void)
 	glutSwapBuffers();
 }
 
-//void reshape(int width, int height)
-//{
-//	vec4 eye(0, 0, 2, 1);
-//	vec4 at(0, 0, 0, 1);
-//	vec4 up(0, 1, 0, 1);
-//
-//	view = LookAt(eye, at, up);
-//	glUniformMatrix4fv(view_loc, 1, GL_TRUE, view);
-//
-//	projection = Frustum(-1, 1, -1, 1, 1, 4);
-//	glUniformMatrix4fv(projection_loc, 1, GL_TRUE, projection);
-//
-//	glViewport(0, 0, width, height);
-//}
 void keyboard(unsigned char key, int x, int y)
 {
 	// keyboard handler
@@ -672,53 +668,87 @@ void keyboard(unsigned char key, int x, int y)
 		glutPostRedisplay();
 		break;
 	case 'd':
-		if (theta[2] >= 0 && theta[2] < 90)
+		if (theta[6] >= 0 && theta[6] < 90)
 		{
-			theta[2] += 10;
-			cout << "\nDang mo canh tu bep 1 voi goc: " << theta[2];
+			theta[6] += 10;
+			cout << "\nDang mo canh tu bep 1 voi goc: " << theta[6];
 			glutPostRedisplay();
 		}
 		break;
 
 	case 'D':
-		if (theta[2] > 0 && theta[2] <= 90)
+		if (theta[6] > 0 && theta[6] <= 90)
 		{
-			theta[2] -= 10;
-			cout << "\nDang dong canh tu bep 1 voi goc: " << theta[2];
+			theta[6] -= 10;
+			cout << "\nDang dong canh tu bep 1 voi goc: " << theta[6];
 			glutPostRedisplay();
 		}
 		break;
 	case 'f':
-		if (theta[3] >= 0 && theta[3] < 90)
+		if (theta[2] >= 0 && theta[2] < 90)
 		{
-			theta[3] += 10;
-			cout << "\nDang mo canh tu bep 2 voi goc: " << theta[3];
+			theta[2] += 10;
+			cout << "\nDang mo canh tu bep 2 voi goc: " << theta[2];
 			glutPostRedisplay();
 		}
 		break;
 
 	case 'F':
-		if (theta[3] > 0 && theta[3] <= 90)
+		if (theta[2] > 0 && theta[2] <= 90)
 		{
-			theta[3] -= 10;
-			cout << "\nDang dong canh tu bep 2 voi goc: " << theta[3];
+			theta[2] -= 10;
+			cout << "\nDang dong canh tu bep 2 voi goc: " << theta[2];
 			glutPostRedisplay();
 		}
 		break;
 	case 'g':
-		if (theta[4] >= 0 && theta[4] < 90)
+		if (theta[3] >= 0 && theta[3] < 90)
 		{
-			theta[4] += 10;
-			cout << "\nDang mo canh tu bep 3 voi goc: " << theta[4];
+			theta[3] += 10;
+			cout << "\nDang mo canh tu bep 3 voi goc: " << theta[3];
 			glutPostRedisplay();
 		}
 		break;
 
 	case 'G':
+		if (theta[3] > 0 && theta[3] <= 90)
+		{
+			theta[3] -= 10;
+			cout << "\nDang dong canh tu bep 3 voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
+	case 'h':
+		if (theta[4] >= 0 && theta[4] < 90)
+		{
+			theta[4] += 10;
+			cout << "\nDang mo canh tu bep 4 voi goc: " << theta[4];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'H':
 		if (theta[4] > 0 && theta[4] <= 90)
 		{
 			theta[4] -= 10;
-			cout << "\nDang dong canh tu bep 3 voi goc: " << theta[4];
+			cout << "\nDang dong canh tu bep 4 voi goc: " << theta[4];
+			glutPostRedisplay();
+		}
+		break;
+	case 'j':
+		if (theta[5] >= 0 && theta[5] < 90)
+		{
+			theta[5] += 10;
+			cout << "\nDang mo canh tu bep 5 voi goc: " << theta[5];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'J':
+		if (theta[5] > 0 && theta[5] <= 90)
+		{
+			theta[5] -= 10;
+			cout << "\nDang dong canh tu bep 5 voi goc: " << theta[5];
 			glutPostRedisplay();
 		}
 		break;
@@ -732,7 +762,11 @@ void keyboard(unsigned char key, int x, int y)
 	t, T: góc nhìn xuống/lên theo chiều y
 	a, A: Mở/đóng cánh trên tủ lạnh
 	a, S: Mở/đóng cánh dưới tủ lanh 
-	d, D: Mở/đóng cảnh tủ bếp
+	d, D: Mở/đóng cảnh tủ bếp 1
+	f, F: Mở/đóng cảnh tủ bếp 2
+	g, G: Mở/đóng cảnh tủ bếp 3
+	h, H: Mở/đóng cảnh tủ bếp 4
+	j, J: Mở/đóng cảnh tủ bếp 5
 */
 
 
