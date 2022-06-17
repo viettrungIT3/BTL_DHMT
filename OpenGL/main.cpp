@@ -1,7 +1,7 @@
 ﻿/*Chương trình chiếu sáng Blinn-Phong (Phong sua doi) cho hình lập phương đơn vị, điều khiển quay bằng phím x, y, z, X, Y, Z.*/
 
 #include "Angel.h"  /* Angel.h là file tự phát triển (tác giả Prof. Angel), có chứa cả khai báo includes glew và freeglut*/
-
+//#include "unistd.h" // time 
 
 // remember to prototype
 void generateGeometry(void);
@@ -26,7 +26,7 @@ color4 vertex_colors[8]; /*Danh sách các màu tương ứng cho 8 đỉnh hìn
 
 GLuint program;
 
-GLfloat theta[3] = { 0, 0, 0 };
+GLfloat theta[10] = { 0, 0, 0 };
 GLfloat dr = 5;
 
 mat4 model;
@@ -180,7 +180,7 @@ void toMau(string mau) {
 		material_diffuse = vec4(1.0, 0.0, 1.0, 1.0); // magenta
 	else if( mau == "orange")
 		material_diffuse = vec4(1.0, 0.5, 0.0, 1.0); // orange
-	else if( mau == "orange")
+	else if( mau == "cyan")
 		material_diffuse = vec4(0.0, 1.0, 1.0, 1.0); // cyan
 	else 
 		material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau xanh
@@ -420,8 +420,111 @@ void tuLanh()
 }
 
 // Tủ bếp
-GLfloat cao_tuBep = 0.8, rong_tuBep = 0.12, dai_tuBep = 0.13, day_tuBep = 0.005;
-mat4 instance_tuBep;
+GLfloat cao_tuBep = 0.12, rong_tuBep = 0.1, dai_tuBep = 0.15, day_tuBep = 0.005;
+mat4 instance_tuBep, instance_dichTuBep;
+void khungTuBep() {
+	instance_tuBep = identity();
+
+	// mặt phải
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, cao_tuBep / 2, day_tuBep / 2) * Scale(rong_tuBep, cao_tuBep, day_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);;
+
+	// mặt trái
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, cao_tuBep / 2, day_tuBep / 2 + dai_tuBep) * Scale(rong_tuBep, cao_tuBep, day_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt dưới
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt giữa
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2 + cao_tuBep / 2, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt trên
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2 + cao_tuBep - day_tuBep, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	
+	// mặt sau
+	instance_tuBep = instance_dichTuBep * Translate(day_tuBep / 2, cao_tuBep / 2, dai_tuBep / 2) * Scale(day_tuBep, cao_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void canhTuBep()
+{
+	//cánh tủ 
+	instance_tuBep = Scale(day_tuBep, cao_tuBep, dai_tuBep/2);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void trucTuBep()
+{
+	instance_tuBep = Translate(0, 0, 0) * Scale(day_tuBep, cao_tuBep, day_tuBep);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void tuBep(GLfloat xoay1, GLfloat xoay2) {
+	instance_dichTuBep *= Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+	khungTuBep();
+
+	// cánh tủ phải
+	m = identity();
+	//instance_dichTuBep = identity();
+	instance_dichTuBep *= Translate( rong_tuBep, cao_tuBep/2, 0);
+	m = m * instance_dichTuBep * RotateY(xoay1);
+	trucTuBep();
+	m = m * Translate(0, 0, dai_tuBep / 4);
+	canhTuBep();
+
+	// cánh tủ trái
+	m = identity();
+	//instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+	//instance_dichTuBep = identity();
+	instance_dichTuBep *= Translate(0, 0, dai_tuBep);
+	m = m * instance_dichTuBep * RotateY(-xoay2);
+	trucTuBep();
+	m = m * Translate(0, 0, -dai_tuBep / 4);
+	canhTuBep();
+}
+
+void boTuBep() {
+	instance_dichTuBep = identity();
+	GLfloat z_dich = 0;
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(0, theta[2]);	// Tủ 2
+
+	z_dich = dai_tuBep + day_tuBep;
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[3], theta[3]);	// Tủ 3
+
+	z_dich = dai_tuBep * 2 + day_tuBep;
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[4], theta[4]);	// Tủ 4
+
+	z_dich = dai_tuBep * 3 + day_tuBep;
+	instance_dichTuBep = Translate(0, 0, z_dich);
+	tuBep(theta[5], theta[5]);	// Tủ 5
+
+	z_dich = 0;
+	instance_dichTuBep = Translate(dai_tuBep + WIDTH_stove + 2*DEPTH_house, 0, z_dich) * RotateY(-90);
+	tuBep(theta[6], theta[6]);	// Tủ 1
+}
 
 
 GLfloat l = -0.5, r = 0.5;
@@ -447,24 +550,11 @@ void display(void)
 	houseFrame();	// nhà
 	stoveTableFrame();	// bàn bếp
 	tuLanh();	// tủ lạnh
+	boTuBep();	// tủ bếp
 
 	glutSwapBuffers();
 }
 
-//void reshape(int width, int height)
-//{
-//	vec4 eye(0, 0, 2, 1);
-//	vec4 at(0, 0, 0, 1);
-//	vec4 up(0, 1, 0, 1);
-//
-//	view = LookAt(eye, at, up);
-//	glUniformMatrix4fv(view_loc, 1, GL_TRUE, view);
-//
-//	projection = Frustum(-1, 1, -1, 1, 1, 4);
-//	glUniformMatrix4fv(projection_loc, 1, GL_TRUE, projection);
-//
-//	glViewport(0, 0, width, height);
-//}
 void keyboard(unsigned char key, int x, int y)
 {
 	// keyboard handler
@@ -546,7 +636,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 'a':
 		if (theta[0] >= 0 && theta[0] < 100)
 		{
-			theta[0] += 5;
+			theta[0] += 10;
 			cout << "\nDang mo canh tren tu lanh voi goc: " << theta[0];
 		}
 		glutPostRedisplay();
@@ -555,7 +645,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 'A':
 		if (theta[0] > 0 && theta[0] <= 100)
 		{
-			theta[0] -= 5;
+			theta[0] -= 10;
 			cout << "\nDang dong canh tren tu lanh voi goc: " << theta[0];
 		}
 		glutPostRedisplay();
@@ -563,7 +653,7 @@ void keyboard(unsigned char key, int x, int y)
 	case 's':
 		if (theta[1] >= 0 && theta[1] < 100)
 		{
-			theta[1] += 5;
+			theta[1] += 10;
 			cout << "\nDang mo canh duoi tu lanh voi goc: " << theta[1];
 		}
 		glutPostRedisplay();
@@ -572,10 +662,95 @@ void keyboard(unsigned char key, int x, int y)
 	case 'S':
 		if (theta[1] > 0 && theta[1] <= 100)
 		{
-			theta[1] -= 5;
+			theta[1] -= 10;
 			cout << "\nDang dong canh duoi tu lanh voi goc: " << theta[1];
 		}
 		glutPostRedisplay();
+		break;
+	case 'd':
+		if (theta[6] >= 0 && theta[6] < 90)
+		{
+			theta[6] += 10;
+			cout << "\nDang mo canh tu bep 1 voi goc: " << theta[6];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'D':
+		if (theta[6] > 0 && theta[6] <= 90)
+		{
+			theta[6] -= 10;
+			cout << "\nDang dong canh tu bep 1 voi goc: " << theta[6];
+			glutPostRedisplay();
+		}
+		break;
+	case 'f':
+		if (theta[2] >= 0 && theta[2] < 90)
+		{
+			theta[2] += 10;
+			cout << "\nDang mo canh tu bep 2 voi goc: " << theta[2];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'F':
+		if (theta[2] > 0 && theta[2] <= 90)
+		{
+			theta[2] -= 10;
+			cout << "\nDang dong canh tu bep 2 voi goc: " << theta[2];
+			glutPostRedisplay();
+		}
+		break;
+	case 'g':
+		if (theta[3] >= 0 && theta[3] < 90)
+		{
+			theta[3] += 10;
+			cout << "\nDang mo canh tu bep 3 voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'G':
+		if (theta[3] > 0 && theta[3] <= 90)
+		{
+			theta[3] -= 10;
+			cout << "\nDang dong canh tu bep 3 voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
+	case 'h':
+		if (theta[4] >= 0 && theta[4] < 90)
+		{
+			theta[4] += 10;
+			cout << "\nDang mo canh tu bep 4 voi goc: " << theta[4];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'H':
+		if (theta[4] > 0 && theta[4] <= 90)
+		{
+			theta[4] -= 10;
+			cout << "\nDang dong canh tu bep 4 voi goc: " << theta[4];
+			glutPostRedisplay();
+		}
+		break;
+	case 'j':
+		if (theta[5] >= 0 && theta[5] < 90)
+		{
+			theta[5] += 10;
+			cout << "\nDang mo canh tu bep 5 voi goc: " << theta[5];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'J':
+		if (theta[5] > 0 && theta[5] <= 90)
+		{
+			theta[5] -= 10;
+			cout << "\nDang dong canh tu bep 5 voi goc: " << theta[5];
+			glutPostRedisplay();
+		}
 		break;
 	}
 }
@@ -587,6 +762,11 @@ void keyboard(unsigned char key, int x, int y)
 	t, T: góc nhìn xuống/lên theo chiều y
 	a, A: Mở/đóng cánh trên tủ lạnh
 	a, S: Mở/đóng cánh dưới tủ lanh 
+	d, D: Mở/đóng cảnh tủ bếp 1
+	f, F: Mở/đóng cảnh tủ bếp 2
+	g, G: Mở/đóng cảnh tủ bếp 3
+	h, H: Mở/đóng cảnh tủ bếp 4
+	j, J: Mở/đóng cảnh tủ bếp 5
 */
 
 
@@ -594,7 +774,7 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(640, 640);
+	glutInitWindowSize(900, 900);
 	glutInitWindowPosition(100, 150);
 	glutCreateWindow("A Cube is rotated by keyboard and shaded");
 
