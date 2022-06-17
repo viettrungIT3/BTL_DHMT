@@ -183,7 +183,7 @@ void toMau(string mau) {
 	else if( mau == "cyan")
 		material_diffuse = vec4(0.0, 1.0, 1.0, 1.0); // cyan
 	else 
-		material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau xanh
+		material_diffuse = vec4(0.0, 1.0, 0.8, 0.5);  // mau xanh
 
 	diffuse_product = light_diffuse * material_diffuse;
 	glUniform4fv(glGetUniformLocation(program, "DiffuseProduct"), 1, diffuse_product);
@@ -218,7 +218,7 @@ void houseFrame() {
 // Bàn bếp
 GLfloat WIDTH_stove = 0.18, HEIGH_stove = 0.2, LONG_stove = 0.4, DEPTH_stove = 0.01;
 GLfloat WIDTH_sink = 0.18, HEIGH_sink = 0.04, LONG_sink = 0.2, DEPTH_sink = 0.03;
-GLfloat WIDTH_eStove = 0.15, HEIGH_eStove = 0.03, LONG_eStove = 0.2, r_eStove;
+GLfloat WIDTH_eStove = 0.15, HEIGH_eStove = 0.02, LONG_eStove = 0.2, r_eStove;
 mat4 instance_stove;
 mat4 instance_fire;
 
@@ -253,6 +253,14 @@ void electricStove() {
 	fire();
 }
 
+// Máy hút mùi
+void kitchenHood() {
+	// mặt bếp
+	instance_stove = Translate(LONG_eStove / 2.0 + 0.18, DEPTH_house + 0.18, WIDTH_eStove / 2.0) * Scale(LONG_eStove-0.01, HEIGH_eStove*2/3, WIDTH_eStove-0.01);
+	toMau("cyan");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_stove);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
 // bồn rửa
 void sink() {
 	// mặt 1
@@ -302,6 +310,7 @@ void stoveTableFrame() {
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	electricStove();	// bếp điện
+	kitchenHood();		// máy hút mùi
 	sink();	// bồn rửa
 }
 
