@@ -775,8 +775,8 @@ int main(int argc, char **argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowSize(900, 900);
-	glutInitWindowPosition(100, 150);
-	glutCreateWindow("A Cube is rotated by keyboard and shaded");
+	glutInitWindowPosition(500, 50);
+	glutCreateWindow("Kitchen");
 
 
 	glewInit();
