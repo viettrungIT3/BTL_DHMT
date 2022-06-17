@@ -1,7 +1,7 @@
 ﻿/*Chương trình chiếu sáng Blinn-Phong (Phong sua doi) cho hình lập phương đơn vị, điều khiển quay bằng phím x, y, z, X, Y, Z.*/
 
 #include "Angel.h"  /* Angel.h là file tự phát triển (tác giả Prof. Angel), có chứa cả khai báo includes glew và freeglut*/
-
+//#include "unistd.h" // time 
 
 // remember to prototype
 void generateGeometry(void);
@@ -26,7 +26,7 @@ color4 vertex_colors[8]; /*Danh sách các màu tương ứng cho 8 đỉnh hìn
 
 GLuint program;
 
-GLfloat theta[3] = { 0, 0, 0 };
+GLfloat theta[10] = { 0, 0, 0 };
 GLfloat dr = 5;
 
 mat4 model;
@@ -180,7 +180,7 @@ void toMau(string mau) {
 		material_diffuse = vec4(1.0, 0.0, 1.0, 1.0); // magenta
 	else if( mau == "orange")
 		material_diffuse = vec4(1.0, 0.5, 0.0, 1.0); // orange
-	else if( mau == "orange")
+	else if( mau == "cyan")
 		material_diffuse = vec4(0.0, 1.0, 1.0, 1.0); // cyan
 	else 
 		material_diffuse = vec4(0.0, 1.0, 0.9, 0.5);  // mau xanh
@@ -420,8 +420,88 @@ void tuLanh()
 }
 
 // Tủ bếp
-GLfloat cao_tuBep = 0.8, rong_tuBep = 0.12, dai_tuBep = 0.13, day_tuBep = 0.005;
-mat4 instance_tuBep;
+GLfloat cao_tuBep = 0.15, rong_tuBep = 0.12, dai_tuBep = 0.2, day_tuBep = 0.005;
+mat4 instance_tuBep, instance_dichTuBep;
+void khungTuBep() {
+	instance_tuBep = identity();
+
+	// mặt phải
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, cao_tuBep / 2, day_tuBep / 2) * Scale(rong_tuBep, cao_tuBep, day_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);;
+
+	// mặt trái
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, cao_tuBep / 2, day_tuBep / 2 + dai_tuBep) * Scale(rong_tuBep, cao_tuBep, day_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt dưới
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt giữa
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2 + cao_tuBep / 2, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// mặt trên
+	instance_tuBep = instance_dichTuBep * Translate(rong_tuBep / 2, day_tuBep / 2 + cao_tuBep - day_tuBep, dai_tuBep / 2) * Scale(rong_tuBep, day_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	
+	// mặt sau
+	instance_tuBep = instance_dichTuBep * Translate(day_tuBep / 2, cao_tuBep / 2, dai_tuBep / 2) * Scale(day_tuBep, cao_tuBep, dai_tuBep);
+	toMau("orange");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void canhTuBepPhai()
+{
+	//cánh tủ phải
+	instance_tuBep = Scale(day_tuBep, cao_tuBep, dai_tuBep/2);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void trucTuBep()
+{
+	instance_tuBep = Translate(0, 0, 0) * Scale(day_tuBep, cao_tuBep, day_tuBep);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * m * instance_tuBep);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void tuBep() {
+	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+	khungTuBep();
+
+	// cánh tủ phải
+	m = identity();
+	//instance_dichTuBep = identity();
+	instance_dichTuBep *= Translate( rong_tuBep, cao_tuBep/2, 0);
+	m = m * instance_dichTuBep * RotateY(theta[2]);
+	trucTuBep();
+	m = m * Translate(0, 0, dai_tuBep/4);
+	canhTuBepPhai();
+
+	// cánh tủ trái
+	m = identity();
+	instance_dichTuBep = Translate(DEPTH_house, DEPTH_house + 0.18, DEPTH_house);
+	//instance_dichTuBep = identity();
+	instance_dichTuBep *= Translate(rong_tuBep, cao_tuBep / 2, dai_tuBep);
+	m = m * instance_dichTuBep * RotateY(-theta[3]);
+	trucTuBep();
+	m = m * Translate(0, 0, -dai_tuBep / 4);
+	canhTuBepPhai();
+}
 
 
 GLfloat l = -0.5, r = 0.5;
@@ -447,6 +527,7 @@ void display(void)
 	houseFrame();	// nhà
 	stoveTableFrame();	// bàn bếp
 	tuLanh();	// tủ lạnh
+	tuBep();	// tủ bếp
 
 	glutSwapBuffers();
 }
@@ -577,6 +658,31 @@ void keyboard(unsigned char key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;
+	case 'd':
+		if (theta[2] >= 0 && theta[2] < 90)
+		{
+			theta[2] += 5;
+			cout << "\nDang mo canh phai tu bep voi goc: " << theta[2];
+			glutPostRedisplay();
+		
+			theta[3] += 5;
+			cout << "\nDang dong canh trai tu bep voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
+
+	case 'D':
+		if (theta[2] > 0 && theta[2] <= 90)
+		{
+			theta[2] -= 5;
+			cout << "\nDang dong canh phai tu bep voi goc: " << theta[2];
+			glutPostRedisplay();
+
+			theta[3] -= 5;
+			cout << "\nDang dong canh trai tu bep voi goc: " << theta[3];
+			glutPostRedisplay();
+		}
+		break;
 	}
 }
 
@@ -587,6 +693,7 @@ void keyboard(unsigned char key, int x, int y)
 	t, T: góc nhìn xuống/lên theo chiều y
 	a, A: Mở/đóng cánh trên tủ lạnh
 	a, S: Mở/đóng cánh dưới tủ lanh 
+	d, D: Mở/đóng cảnh tủ bếp
 */
 
 
@@ -594,7 +701,7 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(640, 640);
+	glutInitWindowSize(900, 900);
 	glutInitWindowPosition(100, 150);
 	glutCreateWindow("A Cube is rotated by keyboard and shaded");
 
