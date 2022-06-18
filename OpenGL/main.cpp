@@ -538,48 +538,88 @@ void boTuBep() {
 
 // Bộ bàn ghế ăn
 GLfloat cao_ban = 0.12, rong_ban = 0.2, dai_ban = 0.3, day_ban = 0.02;
+GLfloat cao_ghe = 0.18, rong_ghe = 0.08, day_ghe = 0.01;
 mat4 instance_ban, instance_dichBan;
 mat4 instance_ghe, instance_dichGhe;
 mat4 instance_boBan;
 void ban() {
-	// mặt 
-	instance_ban = Translate(0, cao_ban - day_ban, 0) * Scale(dai_ban, day_ban, rong_ban);
-	toMau("green");
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
-	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//// mặt 
+	//instance_ban = Translate(0, cao_ban - day_ban, 0) * Scale(dai_ban, day_ban, rong_ban);
+	//toMau("green");
+	//glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	//glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	// chân 1
+	// chân bàn
 	instance_ban = Translate(dai_ban/2 - day_ban/2, cao_ban - day_ban - cao_ban/2,  - rong_ban/2 + day_ban/2) * Scale(day_ban, cao_ban-day_ban, day_ban);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	// chân 1
+	// chân bàn
 	instance_ban = Translate(-dai_ban / 2 + day_ban / 2, cao_ban - day_ban - cao_ban / 2, -rong_ban / 2 + day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	// chân 1
+	// chân bàn
 	instance_ban = Translate(-dai_ban / 2 + day_ban / 2, cao_ban - day_ban - cao_ban / 2, rong_ban / 2 - day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 
-	// chân 1
+	// chân bàn
 	instance_ban = Translate(dai_ban / 2 - day_ban / 2, cao_ban - day_ban - cao_ban / 2, rong_ban / 2 - day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
 	toMau("red");
 	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
 	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 }
 
-void ghe() {}
+void ghe() {
+	// mặt ghế
+	instance_ghe = Translate(0, cao_ghe/2, 0) * Scale(rong_ghe, day_ghe, rong_ghe);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân
+	instance_ghe = Translate(rong_ghe/2 - day_ghe/2, cao_ghe/2 - day_ghe - cao_ghe/6, rong_ghe/2 - day_ghe/2) * Scale(day_ghe, cao_ghe/3, day_ghe);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân
+	instance_ghe = Translate(-rong_ghe / 2 +day_ghe/2, cao_ghe / 2 - day_ghe - cao_ghe / 6, rong_ghe / 2 - day_ghe/2) * Scale(day_ghe, cao_ghe / 3, day_ghe);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân
+	instance_ghe = Translate(-rong_ghe / 2 + day_ghe / 2, cao_ghe / 2 - day_ghe - cao_ghe / 6, -rong_ghe / 2 + day_ghe / 2) * Scale(day_ghe, cao_ghe/3, day_ghe);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân
+	instance_ghe = Translate(rong_ghe / 2 - day_ghe / 2, cao_ghe / 2 - day_ghe - cao_ghe / 6, -rong_ghe / 2 + day_ghe / 2) * Scale(day_ghe, cao_ghe/3, day_ghe);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// tựa lưng
+	instance_ghe = Translate(0, cao_ghe / 2 + day_ghe + rong_ghe/2, -rong_ghe / 2) * Scale(rong_ghe, rong_ghe, day_ghe);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ghe);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
 
 void boBanGhe() {
 	instance_boBan = identity();
 	instance_boBan = Translate(DEPTH_house + LONG_house/2, DEPTH_house, DEPTH_house + LONG_house/2);
 	ban();
+
+	instance_boBan = Translate(DEPTH_house + LONG_house / 2, DEPTH_house, DEPTH_house + LONG_house / 2);
+	ghe();
 }
 
 GLfloat l = -0.5, r = 0.5;
