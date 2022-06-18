@@ -196,17 +196,17 @@ mat4 instance_house;
 // Nhà
 void houseFrame() {
 	instance_house = identity();
-	// mặt 1
-	instance_house = Translate( DEPTH_house / 2.0, HEIGH_house/2.0, LONG_house/2.0) * Scale(DEPTH_house, HEIGH_house, LONG_house);
-	toMau("magenta");
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
-	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//// mặt 1
+	//instance_house = Translate( DEPTH_house / 2.0, HEIGH_house/2.0, LONG_house/2.0) * Scale(DEPTH_house, HEIGH_house, LONG_house);
+	//toMau("magenta");
+	//glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
+	//glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
-	// mặt 2
-	instance_house = Translate(LONG_house/2.0, HEIGH_house/2.0, DEPTH_house/2.0) * Scale(LONG_house, HEIGH_house, DEPTH_house);
-	toMau("magenta");
-	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
-	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+	//// mặt 2
+	//instance_house = Translate(LONG_house/2.0, HEIGH_house/2.0, DEPTH_house/2.0) * Scale(LONG_house, HEIGH_house, DEPTH_house);
+	//toMau("magenta");
+	//glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_house);
+	//glDrawArrays(GL_TRIANGLES, 0, NumPoints);
 
 	// nền
 	instance_house = Translate(LONG_house/2.0, DEPTH_house/2.0, LONG_house/2.0) * Scale(LONG_house, DEPTH_house, LONG_house);
@@ -536,6 +536,52 @@ void boTuBep() {
 }
 
 
+// Bộ bàn ghế ăn
+GLfloat cao_ban = 0.12, rong_ban = 0.2, dai_ban = 0.3, day_ban = 0.02;
+mat4 instance_ban, instance_dichBan;
+mat4 instance_ghe, instance_dichGhe;
+mat4 instance_boBan;
+void ban() {
+	// mặt 
+	instance_ban = Translate(0, cao_ban - day_ban, 0) * Scale(dai_ban, day_ban, rong_ban);
+	toMau("green");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân 1
+	instance_ban = Translate(dai_ban/2 - day_ban/2, cao_ban - day_ban - cao_ban/2,  - rong_ban/2 + day_ban/2) * Scale(day_ban, cao_ban-day_ban, day_ban);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân 1
+	instance_ban = Translate(-dai_ban / 2 + day_ban / 2, cao_ban - day_ban - cao_ban / 2, -rong_ban / 2 + day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+	// chân 1
+	instance_ban = Translate(-dai_ban / 2 + day_ban / 2, cao_ban - day_ban - cao_ban / 2, rong_ban / 2 - day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+
+
+	// chân 1
+	instance_ban = Translate(dai_ban / 2 - day_ban / 2, cao_ban - day_ban - cao_ban / 2, rong_ban / 2 - day_ban / 2) * Scale(day_ban, cao_ban - day_ban, day_ban);
+	toMau("red");
+	glUniformMatrix4fv(model_loc, 1, GL_TRUE, model * instance_boBan * instance_ban);
+	glDrawArrays(GL_TRIANGLES, 0, NumPoints);
+}
+
+void ghe() {}
+
+void boBanGhe() {
+	instance_boBan = identity();
+	instance_boBan = Translate(DEPTH_house + LONG_house/2, DEPTH_house, DEPTH_house + LONG_house/2);
+	ban();
+}
+
 GLfloat l = -0.5, r = 0.5;
 GLfloat bottom = -0.5, top = 0.5;
 GLfloat zNear = 2, zFar = 10.0;
@@ -560,6 +606,7 @@ void display(void)
 	stoveTableFrame();	// bàn bếp
 	tuLanh();	// tủ lạnh
 	boTuBep();	// tủ bếp
+	boBanGhe();	// bộ bàn ghế
 
 	glutSwapBuffers();
 }
@@ -783,7 +830,7 @@ int main(int argc, char **argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowSize(900, 900);
+	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(500, 50);
 	glutCreateWindow("Kitchen");
 
