@@ -80,11 +80,19 @@ D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(432,43): war
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(432,61): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(432,80): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(492,59): warning C4244: 'argument': conversion from 'double' to 'const GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(602,15): warning C4305: '-=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(611,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(625,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(626,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(627,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(634,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
-D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(641,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(540,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(540,39): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(540,54): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(540,70): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(541,23): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(541,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(541,56): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(713,15): warning C4305: '-=': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(722,15): warning C4305: '+=': truncation from 'double' to 'GLfloat'
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(736,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(737,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(738,27): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(745,29): warning C4244: '-=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(752,29): warning C4244: '+=': conversion from 'double' to 'GLfloat', possible loss of data
+D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\OpenGL\main.cpp(877,19): warning C4305: '=': truncation from 'double' to 'GLfloat'
   OpenGL.vcxproj -> D:\Downloads\K6\DHMT\BTL\Nhom09_BTL_NhaBep\BTL_DHMT\Debug\OpenGL.exe
